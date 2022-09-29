@@ -2,6 +2,7 @@ import { useCallback, useState } from 'react';
 
 import { getGitHubContributors } from 'services/GitHubContributors';
 import { useFetchRequest } from 'hooks/useFetchRequest';
+import { randomizeArray } from 'utils/randomizeArray';
 
 export function useGetImages(numberOfImages = 6) {
   const [getContributors] = useFetchRequest(getGitHubContributors);
@@ -11,8 +12,7 @@ export function useGetImages(numberOfImages = 6) {
     setIsLoading(true);
     const contributors = await getContributors();
 
-    const images = contributors
-      .sort(() => 0.5 - Math.random())
+    const images = randomizeArray(contributors)
       .slice(0, numberOfImages)
       .map((eachContributor) => ({
         imageSrc: eachContributor.avatar_url,
