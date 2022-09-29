@@ -63,3 +63,8 @@ Memory game using random GitHub user's images as card images.
 
 - There is a _reset.css_ file with one of the most used reset.css used throught the Internet. With this file, we can assure that all the browser will display in the same way our app. The CSS is obtained from _http://meyerweb.com/eric/tools/css/reset/_
 - As working with Styled Components, we have a GlobalStyles file in order to get the same **font-family**, **color for anchors**, and more throught all the application. Furthermore, there is also a specific theme which allow us to use some default values when styling our components and app, like the colors or the spacings.
+
+&nbsp;
+
+- Regarding the tests:
+  - It's true they are not the very first tests I'm doing, it's not something I got the opportunity to work in any professional environment.
