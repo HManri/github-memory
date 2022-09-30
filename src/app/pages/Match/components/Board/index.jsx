@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { array } from 'prop-types';
+import { array, func } from 'prop-types';
 
+import { GAME_RESULT } from 'constants/gameResult';
 import Card from 'components/Card';
 import { BoardWrapper } from './Board.style';
 
-export default function Board({ cards }) {
+export default function Board({ cards, onFinishGame }) {
   const [gameState, setGameState] = useState();
   const [selectedCardId, setSelectedCardId] = useState(null);
   const [selectedCardIndex, setSelectedCardIndex] = useState(null);
@@ -36,6 +37,12 @@ export default function Board({ cards }) {
     setNumberOfPairs(0);
   }, [cards]);
 
+  useEffect(() => {
+    if (gameState && numberOfPairs === Object.keys(gameState).length) {
+      onFinishGame(GAME_RESULT.Win);
+    }
+  }, [gameState, numberOfPairs, onFinishGame]);
+
   if (!gameState) {
     // TODO show some kind of placeholder
     return null;
@@ -60,4 +67,5 @@ export default function Board({ cards }) {
 
 Board.propTypes = {
   cards: array.isRequired,
+  onFinishGame: func.isRequired,
 };

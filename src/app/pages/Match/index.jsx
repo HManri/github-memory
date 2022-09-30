@@ -8,6 +8,10 @@ export default function Match() {
   const [getImages, isLoadingImages] = useGetImages();
   const [cards, setCards] = useState();
 
+  const handleOnFinishGame = (status) => {
+    console.log(status);
+  };
+
   const initializeGame = useCallback(async () => {
     const images = await getImages();
 
@@ -31,5 +35,5 @@ export default function Match() {
     return <div>Loading</div>;
   }
 
-  return <Board cards={cards} />;
+  return <Board cards={cards} onFinishGame={handleOnFinishGame} />;
 }
