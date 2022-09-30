@@ -15,6 +15,7 @@ export function useGetImages(numberOfImages = 6) {
     const images = randomizeArray(contributors)
       .slice(0, numberOfImages)
       .map((eachContributor) => ({
+        id: eachContributor.id.toString(),
         imageSrc: eachContributor.avatar_url,
         imageAlt: eachContributor.login,
       }));

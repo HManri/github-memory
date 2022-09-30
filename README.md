@@ -49,6 +49,10 @@ Memory game using random GitHub user's images as card images.
 >
 > &nbsp;
 
+## 🔘 Next features to do
+
+- Thanks to have a basic **Board** in a different component of **Match**, we can do different _Boards_ with different rules, allowing the player to play in differents modes.
+
 ## 💡 Relevant things
 
 - As written in _Installation and useful scripts_, we need to create a GitHub personal access token in order to get the App running correctly.
