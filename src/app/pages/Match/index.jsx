@@ -3,6 +3,7 @@ import React, { useEffect, useCallback, useState } from 'react';
 import { useGetImages } from 'hooks/useGetImages';
 import { randomizeArray } from 'utils/randomizeArray';
 import Board from 'pages/Match/components/Board';
+import { MatchWrapper, BoardWrapper } from './Match.style';
 
 export default function Match() {
   const [getImages, isLoadingImages] = useGetImages();
@@ -35,5 +36,11 @@ export default function Match() {
     return <div>Loading</div>;
   }
 
-  return <Board cards={cards} onFinishGame={handleOnFinishGame} />;
+  return (
+    <MatchWrapper>
+      <BoardWrapper>
+        <Board cards={cards} onFinishGame={handleOnFinishGame} />
+      </BoardWrapper>
+    </MatchWrapper>
+  );
 }

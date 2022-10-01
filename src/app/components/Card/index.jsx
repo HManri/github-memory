@@ -3,10 +3,10 @@ import { string, func, bool } from 'prop-types';
 
 import { Wrapper } from './Card.style';
 
-export default function Card({ id, image, imageAlt, active, disabled, onClick }) {
+export default function Card({ testId, image, imageAlt, active, disabled, onClick }) {
   return (
     <Wrapper
-      data-testid={id}
+      data-testid={testId}
       active={active}
       disabled={disabled}
       onClick={!disabled ? onClick : undefined}
@@ -17,7 +17,7 @@ export default function Card({ id, image, imageAlt, active, disabled, onClick })
 }
 
 Card.propTypes = {
-  id: string.isRequired,
+  testId: string,
   image: string.isRequired,
   imageAlt: string.isRequired,
   active: bool,

@@ -4,8 +4,8 @@ export const Wrapper = styled.div`
   box-sizing: border-box;
   padding: ${(props) => props.theme.spacings.tiny}px;
   border: 3px solid ${(props) => props.theme.colors.border};
-  width: 200px;
-  height: 200px;
+  min-width: 50px;
+  min-height: 50px;
 
   > img {
     display: block;

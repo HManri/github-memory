@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
-import { Banner, Title } from './MainLayout.style';
+import { Banner, Title, Wrapper } from './MainLayout.style';
 
 export default function MainLayout() {
   return (
@@ -9,7 +9,9 @@ export default function MainLayout() {
       <Banner>
         <Title>GitHub Memory</Title>
       </Banner>
-      <Outlet />
+      <Wrapper>
+        <Outlet />
+      </Wrapper>
     </>
   );
 }

@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const HomeWrapper = styled.div`
   position: relative;
   height: 100%;
-  background-color: ${(props) => props.theme.colors.wine};
 `;
 
 export const HomeFloating = styled.div`

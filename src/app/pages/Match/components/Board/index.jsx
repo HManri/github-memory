@@ -41,8 +41,7 @@ export default function Board({ cards, onFinishGame }) {
       }, {}),
     );
     setNumberOfPairs(0);
-    console.log('aaa', 'start timer');
-    startTimer();
+    // startTimer();
   }, [cards, startTimer]);
 
   useEffect(() => {
@@ -51,6 +50,12 @@ export default function Board({ cards, onFinishGame }) {
       stopTimer();
     }
   }, [gameState, numberOfPairs, onFinishGame, stopTimer]);
+
+  useEffect(() => {
+    return () => {
+      stopTimer();
+    };
+  }, [stopTimer]);
 
   if (!gameState) {
     // TODO show some kind of placeholder
@@ -61,8 +66,8 @@ export default function Board({ cards, onFinishGame }) {
     <BoardWrapper>
       {cards.map((eachCard, index) => (
         <Card
-          key={`image-${index}-${eachCard.id}`}
-          id={eachCard.id}
+          key={`card-${index}-${eachCard.id}`}
+          testId={`${index}-${eachCard.id}`}
           image={eachCard.imageSrc}
           imageAlt={eachCard.imageAlt}
           active={index === selectedCardIndex}
