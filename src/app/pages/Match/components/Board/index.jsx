@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { array, func } from 'prop-types';
 
+import { useTimer } from 'hooks/useTimer';
 import { GAME_RESULT } from 'constants/gameResult';
 import Card from 'components/Card';
 import { BoardWrapper } from './Board.style';
 
+const DEFAULT_TIMER = 2 * 60;
+
 export default function Board({ cards, onFinishGame }) {
+  const [timer, startTimer, stopTimer] = useTimer(DEFAULT_TIMER);
   const [gameState, setGameState] = useState();
   const [selectedCardId, setSelectedCardId] = useState(null);
   const [selectedCardIndex, setSelectedCardIndex] = useState(null);
   const [numberOfPairs, setNumberOfPairs] = useState(0);
+
+  console.log('aaa', timer);
 
   const handleOnClickCard = (cardId, index) => () => {
     if (!selectedCardId) {
@@ -35,13 +41,16 @@ export default function Board({ cards, onFinishGame }) {
       }, {}),
     );
     setNumberOfPairs(0);
-  }, [cards]);
+    console.log('aaa', 'start timer');
+    startTimer();
+  }, [cards, startTimer]);
 
   useEffect(() => {
     if (gameState && numberOfPairs === Object.keys(gameState).length) {
-      onFinishGame(GAME_RESULT.Win);
+      onFinishGame(GAME_RESULT.WIN);
+      stopTimer();
     }
-  }, [gameState, numberOfPairs, onFinishGame]);
+  }, [gameState, numberOfPairs, onFinishGame, stopTimer]);
 
   if (!gameState) {
     // TODO show some kind of placeholder
