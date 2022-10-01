@@ -14,6 +14,9 @@ const COLORS = {
   orange: '#ffa500',
   green: '#5bb318',
   lightGreen: '#7dce13',
+  turquoise: '#0b7089',
+  greengrey: '#d0d6d7',
+  wine: '#9a254b',
 };
 
 const SPACINGS = {
