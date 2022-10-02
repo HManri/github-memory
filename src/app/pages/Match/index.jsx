@@ -1,6 +1,7 @@
 import React, { useEffect, useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { GAME_RESULT } from 'constants/gameResult';
 import { useGetImages } from 'hooks/useGetImages';
 import { randomizeArray } from 'utils/randomizeArray';
 import Board from 'pages/Match/components/Board';
@@ -20,13 +21,16 @@ export default function Match() {
   const [getImages, isLoadingImages] = useGetImages();
   const [cards, setCards] = useState();
   const [isOpenFinishMatchModal, setIsOpenFinishMatchModal] = useState(false);
+  const [typeFinishGame, setTypeFinishGame] = useState(null);
 
   const handleOnFinishGame = (status) => {
-    console.log(status);
+    setTypeFinishGame(status);
+    setIsOpenFinishMatchModal(true);
   };
 
   const handleOnClickPlayAgain = () => {
     initializeGame();
+    setTypeFinishGame(null);
     setIsOpenFinishMatchModal(false);
   };
 
@@ -65,7 +69,8 @@ export default function Match() {
         onClose={() => setIsOpenFinishMatchModal(false)}
       >
         <ModalBody>
-          <ModalBodyTitle>You Win!</ModalBodyTitle>
+          <ModalBodyTitle>{typeFinishGame === GAME_RESULT.WIN && `You Win!`}</ModalBodyTitle>
+          <ModalBodyTitle>{typeFinishGame === GAME_RESULT.LOSE && `You lose :-(`}</ModalBodyTitle>
           <ModalBodyScore>Score: 500</ModalBodyScore>
 
           <ModalBodyActions>

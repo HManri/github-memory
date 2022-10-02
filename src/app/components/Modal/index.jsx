@@ -50,6 +50,8 @@ export default function Modal({ isOpen, testId, onClose, children }) {
     }
   }, [isOpen, isOpenState, handleOnClickOutside]);
 
+  if (!isOpen) return null;
+
   return ReactDOM.createPortal(
     <Wrapper
       data-testid={testId}
