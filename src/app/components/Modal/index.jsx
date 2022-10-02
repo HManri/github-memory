@@ -60,7 +60,9 @@ export default function Modal({ isOpen, testId, onClose, children }) {
       onTransitionEnd={handleOnTransitionEnd}
     >
       <BodyWrapper ref={bodyRef}>
-        <CloseButton onClick={onClose}>&times;</CloseButton>
+        <CloseButton data-testid={`${testId}__close_btn`} onClick={onClose}>
+          &times;
+        </CloseButton>
         {children}
       </BodyWrapper>
     </Wrapper>,
