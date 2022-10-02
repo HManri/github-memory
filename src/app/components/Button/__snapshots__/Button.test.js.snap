@@ -6,7 +6,7 @@ exports[`Button should render correctly 1`] = `
   "baseElement": <body>
     <div>
       <button
-        class="sc-bcXHqe kUEIjx"
+        class="sc-bcXHqe kJpEhf"
         data-testid="button-test"
       >
         <span>
@@ -17,7 +17,7 @@ exports[`Button should render correctly 1`] = `
   </body>,
   "container": <div>
     <button
-      class="sc-bcXHqe kUEIjx"
+      class="sc-bcXHqe kJpEhf"
       data-testid="button-test"
     >
       <span>

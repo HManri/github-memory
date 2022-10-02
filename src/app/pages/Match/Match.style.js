@@ -19,7 +19,7 @@ export const BoardWrapper = styled.div`
   justify-content: center;
   gap: ${(props) => props.theme.spacings.big}px;
   border-radius: 16px;
-  padding: ${(props) => props.theme.spacings.big}px 0;
+  padding: ${(props) => props.theme.spacings.big}px;
   box-sizing: border-box;
 `;
 

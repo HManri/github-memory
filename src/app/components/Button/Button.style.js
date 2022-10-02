@@ -10,6 +10,7 @@ export const StyledButton = styled.button`
   background-color: ${(props) => props.theme.colors.white};
   color: ${(props) => props.theme.colors.text};
   border: 1px solid ${(props) => props.theme.colors.darkGrey};
+  ${(props) => props.theme.text.default};
 
   &:hover {
     background-color: ${(props) => props.theme.colors.lightGrey};

@@ -4,7 +4,14 @@ import { array, func } from 'prop-types';
 import { useTimer } from 'hooks/useTimer';
 import { GAME_RESULT } from 'constants/gameResult';
 import Card from 'components/Card';
-import { BoardWrapper } from './Board.style';
+import Button from 'components/Button';
+import {
+  BoardWrapper,
+  BoardGame,
+  BoardResults,
+  BoardResultsText,
+  BoardResultsActions,
+} from './Board.style';
 
 const DEFAULT_TIMER = 2 * 60;
 
@@ -50,6 +57,11 @@ export default function Board({ cards, onFinishGame }) {
     }, 400);
   };
 
+  const handleOnClickGiveUp = () => {
+    stopTimer();
+    onFinishGame(GAME_RESULT.LOSE, calculateScore(numberOfPairs));
+  };
+
   useEffect(() => {
     setGameState(
       [...new Set(cards.map((eachCard) => eachCard.id))].reduce((acc, eachId) => {
@@ -87,17 +99,29 @@ export default function Board({ cards, onFinishGame }) {
 
   return (
     <BoardWrapper>
-      {cards.map((eachCard, index) => (
-        <Card
-          key={`card-${index}-${eachCard.id}`}
-          testId={`${index}-${eachCard.id}`}
-          image={eachCard.imageSrc}
-          imageAlt={eachCard.imageAlt}
-          active={index === selectedCardIndex || index === selectedPairCardIndex}
-          disabled={gameState[eachCard.id]}
-          onClick={handleOnClickCard(eachCard.id, index)}
-        />
-      ))}
+      <BoardGame>
+        {cards.map((eachCard, index) => (
+          <Card
+            key={`card-${index}-${eachCard.id}`}
+            testId={`${index}-${eachCard.id}`}
+            image={eachCard.imageSrc}
+            imageAlt={eachCard.imageAlt}
+            active={index === selectedCardIndex || index === selectedPairCardIndex}
+            disabled={gameState[eachCard.id]}
+            onClick={handleOnClickCard(eachCard.id, index)}
+          />
+        ))}
+      </BoardGame>
+
+      <BoardResults>
+        <BoardResultsText>{`Time: ${timer} seconds`}</BoardResultsText>
+        <BoardResultsText>{`Score: ${calculateScore(numberOfPairs)}`}</BoardResultsText>
+        <BoardResultsActions>
+          <Button onClick={handleOnClickGiveUp}>
+            <BoardResultsText>Give up</BoardResultsText>
+          </Button>
+        </BoardResultsActions>
+      </BoardResults>
     </BoardWrapper>
   );
 }
