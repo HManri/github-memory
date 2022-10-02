@@ -16,7 +16,9 @@ export default function Board({ cards, onFinishGame }) {
   const [selectedPairCardIndex, setSelectedPairCardIndex] = useState(null);
   const [numberOfPairs, setNumberOfPairs] = useState(0);
 
-  console.log('aaa', timer);
+  const calculateScore = (pairs) => {
+    return pairs * 100;
+  };
 
   const handleOnClickCard = (cardId, index) => () => {
     if (!selectedCardId) {
@@ -56,15 +58,21 @@ export default function Board({ cards, onFinishGame }) {
       }, {}),
     );
     setNumberOfPairs(0);
-    // startTimer();
+    startTimer();
   }, [cards, startTimer]);
 
   useEffect(() => {
     if (gameState && numberOfPairs === Object.keys(gameState).length) {
-      onFinishGame(GAME_RESULT.WIN);
+      onFinishGame(GAME_RESULT.WIN, calculateScore(numberOfPairs));
       stopTimer();
     }
   }, [gameState, numberOfPairs, onFinishGame, stopTimer]);
+
+  useEffect(() => {
+    if (timer === 0) {
+      onFinishGame(GAME_RESULT.LOSE, calculateScore(numberOfPairs));
+    }
+  }, [onFinishGame, numberOfPairs, timer]);
 
   useEffect(() => {
     return () => {

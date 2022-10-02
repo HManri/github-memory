@@ -21,17 +21,20 @@ export default function Match() {
   const [getImages, isLoadingImages] = useGetImages();
   const [cards, setCards] = useState();
   const [isOpenFinishMatchModal, setIsOpenFinishMatchModal] = useState(false);
+  const [finalScore, setFinalScore] = useState(0);
   const [typeFinishGame, setTypeFinishGame] = useState(null);
 
-  const handleOnFinishGame = (status) => {
+  const handleOnFinishGame = (status, score) => {
+    setFinalScore(score);
     setTypeFinishGame(status);
     setIsOpenFinishMatchModal(true);
   };
 
   const handleOnClickPlayAgain = () => {
     initializeGame();
-    setTypeFinishGame(null);
     setIsOpenFinishMatchModal(false);
+    setTypeFinishGame(null);
+    setFinalScore(0);
   };
 
   const initializeGame = useCallback(async () => {
@@ -71,7 +74,7 @@ export default function Match() {
         <ModalBody>
           <ModalBodyTitle>{typeFinishGame === GAME_RESULT.WIN && `You Win!`}</ModalBodyTitle>
           <ModalBodyTitle>{typeFinishGame === GAME_RESULT.LOSE && `You lose :-(`}</ModalBodyTitle>
-          <ModalBodyScore>Score: 500</ModalBodyScore>
+          <ModalBodyScore>{`Score: ${finalScore}`}</ModalBodyScore>
 
           <ModalBodyActions>
             <Button onClick={() => navigate('/')}>Go home</Button>
