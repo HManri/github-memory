@@ -12,11 +12,12 @@ const COLORS = {
   lightBlack: '#696969',
   link: '#4682B4',
   orange: '#ffa500',
-  green: '#5bb318',
+  green: '#878e32',
   lightGreen: '#7dce13',
   turquoise: '#0b7089',
   greengrey: '#d0d6d7',
   wine: '#9a254b',
+  grass: '#acb53f',
 };
 
 const SPACINGS = {

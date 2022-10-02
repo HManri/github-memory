@@ -13,24 +13,39 @@ export default function Board({ cards, onFinishGame }) {
   const [gameState, setGameState] = useState();
   const [selectedCardId, setSelectedCardId] = useState(null);
   const [selectedCardIndex, setSelectedCardIndex] = useState(null);
+  const [selectedPairCardIndex, setSelectedPairCardIndex] = useState(null);
   const [numberOfPairs, setNumberOfPairs] = useState(0);
 
   console.log('aaa', timer);
 
   const handleOnClickCard = (cardId, index) => () => {
     if (!selectedCardId) {
+      // there is no selected card
       setSelectedCardId(cardId);
       setSelectedCardIndex(index);
       return;
     }
 
+    if (selectedCardId === cardId && selectedCardIndex === index) {
+      // selected card is the same we already had, so hide it
+      setSelectedCardId(null);
+      setSelectedCardIndex(null);
+      return;
+    }
+
     if (selectedCardId === cardId) {
+      // selected card have the same id, but it's not the same, we have a match
       setGameState({ ...gameState, [cardId]: true });
       setNumberOfPairs(numberOfPairs + 1);
     }
 
-    setSelectedCardId(null);
-    setSelectedCardIndex(null);
+    // otherwise, we don't have a match
+    setSelectedPairCardIndex(index);
+    setTimeout(() => {
+      setSelectedCardId(null);
+      setSelectedCardIndex(null);
+      setSelectedPairCardIndex(null);
+    }, 400);
   };
 
   useEffect(() => {
@@ -70,7 +85,7 @@ export default function Board({ cards, onFinishGame }) {
           testId={`${index}-${eachCard.id}`}
           image={eachCard.imageSrc}
           imageAlt={eachCard.imageAlt}
-          active={index === selectedCardIndex}
+          active={index === selectedCardIndex || index === selectedPairCardIndex}
           disabled={gameState[eachCard.id]}
           onClick={handleOnClickCard(eachCard.id, index)}
         />

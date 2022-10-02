@@ -1,7 +1,7 @@
 import React from 'react';
 import { string, func, bool } from 'prop-types';
 
-import { Wrapper } from './Card.style';
+import { Wrapper, TranslucidLayer } from './Card.style';
 
 export default function Card({ testId, image, imageAlt, active, disabled, onClick }) {
   return (
@@ -12,6 +12,7 @@ export default function Card({ testId, image, imageAlt, active, disabled, onClic
       onClick={!disabled ? onClick : undefined}
     >
       <img src={image} alt={imageAlt} />
+      <TranslucidLayer show={disabled} />
     </Wrapper>
   );
 }

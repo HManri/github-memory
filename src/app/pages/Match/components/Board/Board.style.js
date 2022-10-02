@@ -8,6 +8,7 @@ export const BoardWrapper = styled.div`
 
   display: grid;
   grid-template-columns: repeat(4, 150px);
+  grid-auto-rows: minmax(150px, auto);
   justify-content: center;
   gap: ${(props) => props.theme.spacings.medium}px;
 `;
