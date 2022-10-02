@@ -1,0 +1,208 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Board should render correctly 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="sc-hLBbgP ghUaCh"
+        data-testid="board-test"
+      >
+        <div
+          class="sc-eDvSVe dhMAaz"
+          data-testid="board-test__board_game"
+        >
+          <div
+            class="sc-bcXHqe gsvhOc"
+            data-testid="card-0-13352"
+          >
+            <img
+              alt="cpojer"
+              src="https://avatars.githubusercontent.com/u/13352?v=4"
+            />
+            <div
+              class="sc-gswNZR OyGZg"
+              data-testid="card-0-13352__translucid_layer"
+            />
+          </div>
+          <div
+            class="sc-bcXHqe gsvhOc"
+            data-testid="card-1-13352"
+          >
+            <img
+              alt="cpojer"
+              src="https://avatars.githubusercontent.com/u/13352?v=4"
+            />
+            <div
+              class="sc-gswNZR OyGZg"
+              data-testid="card-1-13352__translucid_layer"
+            />
+          </div>
+        </div>
+        <div
+          class="sc-jSUZER jbhCQc"
+          data-testid="board-test__board_results"
+        >
+          <div
+            class="sc-gKPRtg gQBhsg"
+            data-testid="board-test__board_results__timer"
+          >
+            <span>
+              Time: 120 seconds
+            </span>
+          </div>
+          <div
+            class="sc-gKPRtg gQBhsg"
+            data-testid="board-test__board_results__score"
+          >
+            <span>
+              Score: 0
+            </span>
+          </div>
+          <div
+            class="sc-iBYQkv gXKaxS"
+            data-testid="board-test__board_results__actions"
+          >
+            <button
+              class="sc-dkrFOg kyrTdB"
+              data-testid="board-test__board_results__actions__give_up_btn"
+            >
+              <div
+                class="sc-gKPRtg gQBhsg"
+              >
+                Give up
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="sc-hLBbgP ghUaCh"
+      data-testid="board-test"
+    >
+      <div
+        class="sc-eDvSVe dhMAaz"
+        data-testid="board-test__board_game"
+      >
+        <div
+          class="sc-bcXHqe gsvhOc"
+          data-testid="card-0-13352"
+        >
+          <img
+            alt="cpojer"
+            src="https://avatars.githubusercontent.com/u/13352?v=4"
+          />
+          <div
+            class="sc-gswNZR OyGZg"
+            data-testid="card-0-13352__translucid_layer"
+          />
+        </div>
+        <div
+          class="sc-bcXHqe gsvhOc"
+          data-testid="card-1-13352"
+        >
+          <img
+            alt="cpojer"
+            src="https://avatars.githubusercontent.com/u/13352?v=4"
+          />
+          <div
+            class="sc-gswNZR OyGZg"
+            data-testid="card-1-13352__translucid_layer"
+          />
+        </div>
+      </div>
+      <div
+        class="sc-jSUZER jbhCQc"
+        data-testid="board-test__board_results"
+      >
+        <div
+          class="sc-gKPRtg gQBhsg"
+          data-testid="board-test__board_results__timer"
+        >
+          <span>
+            Time: 120 seconds
+          </span>
+        </div>
+        <div
+          class="sc-gKPRtg gQBhsg"
+          data-testid="board-test__board_results__score"
+        >
+          <span>
+            Score: 0
+          </span>
+        </div>
+        <div
+          class="sc-iBYQkv gXKaxS"
+          data-testid="board-test__board_results__actions"
+        >
+          <button
+            class="sc-dkrFOg kyrTdB"
+            data-testid="board-test__board_results__actions__give_up_btn"
+          >
+            <div
+              class="sc-gKPRtg gQBhsg"
+            >
+              Give up
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

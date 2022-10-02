@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { array, string, func } from 'prop-types';
+import { arrayOf, string, func, shape } from 'prop-types';
 
 import { useTimer } from 'hooks/useTimer';
 import { GAME_RESULT } from 'constants/gameResult';
@@ -134,7 +134,8 @@ export default function Board({ cards, testId, onFinishGame }) {
 }
 
 Board.propTypes = {
-  cards: array.isRequired,
+  cards: arrayOf(shape({ id: string, imageSrc: string, imageAlt: string, cardId: string }))
+    .isRequired,
   testId: string,
   onFinishGame: func.isRequired,
 };
