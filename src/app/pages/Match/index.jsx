@@ -78,6 +78,8 @@ export default function Match() {
       <Modal
         testId="match__modal"
         isOpen={isOpenFinishMatchModal}
+        showCloseButton={false}
+        closeOnClickOutside={false}
         onClose={() => setIsOpenFinishMatchModal(false)}
       >
         <ModalBody data-testid="match__modal__body">

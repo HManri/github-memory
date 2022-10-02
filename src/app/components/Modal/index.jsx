@@ -4,7 +4,14 @@ import ReactDOM from 'react-dom';
 
 import { Wrapper, BodyWrapper, CloseButton } from './Modal.style';
 
-export default function Modal({ isOpen, testId, onClose, children }) {
+export default function Modal({
+  isOpen,
+  showCloseButton,
+  closeOnClickOutside,
+  testId,
+  onClose,
+  children,
+}) {
   const [isOpenState, setIsOpenState] = useState(false);
   const [isClosingModal, setIsClosingModal] = useState(false);
   const overlayRef = useRef();
@@ -34,7 +41,7 @@ export default function Modal({ isOpen, testId, onClose, children }) {
     if (isOpen && !isOpenState) {
       setIsOpenState(true);
 
-      if (overlayRef.current) {
+      if (closeOnClickOutside && overlayRef.current) {
         overlayRef.current.addEventListener('click', handleOnClickOutside);
       }
 
@@ -44,11 +51,11 @@ export default function Modal({ isOpen, testId, onClose, children }) {
     if (!isOpen && isOpenState) {
       handleOnCloseModal();
 
-      if (overlayRef?.current) {
+      if (closeOnClickOutside && overlayRef?.current) {
         overlayRef.current.removeEventListener('click', handleOnClickOutside);
       }
     }
-  }, [isOpen, isOpenState, handleOnClickOutside]);
+  }, [isOpen, isOpenState, handleOnClickOutside, closeOnClickOutside]);
 
   if (!isOpen) return null;
 
@@ -60,9 +67,11 @@ export default function Modal({ isOpen, testId, onClose, children }) {
       onTransitionEnd={handleOnTransitionEnd}
     >
       <BodyWrapper ref={bodyRef}>
-        <CloseButton data-testid={`${testId}__close_btn`} onClick={onClose}>
-          &times;
-        </CloseButton>
+        {showCloseButton && (
+          <CloseButton data-testid={`${testId}__close_btn`} onClick={onClose}>
+            &times;
+          </CloseButton>
+        )}
         {children}
       </BodyWrapper>
     </Wrapper>,
@@ -70,8 +79,15 @@ export default function Modal({ isOpen, testId, onClose, children }) {
   );
 }
 
+Modal.defaultProps = {
+  showCloseButton: true,
+  closeOnClickOutside: true,
+};
+
 Modal.propTypes = {
   isOpen: bool.isRequired,
+  showCloseButton: bool,
+  closeOnClickOutside: bool,
   testId: string,
   onClose: func.isRequired,
   children: node.isRequired,
