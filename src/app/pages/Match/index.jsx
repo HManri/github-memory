@@ -61,16 +61,18 @@ export default function Match() {
   const isLoading = !cards || isLoadingImages;
 
   return (
-    <MatchWrapper>
-      <BoardWrapper data-testid="foobar">
+    <MatchWrapper data-testid="match">
+      <BoardWrapper data-testid="match__board">
         {isLoading && (
-          <LoadingGame>
+          <LoadingGame data-testid="match__board__loading">
             <SpinnerWrapper>
-              <Spinner />
+              <Spinner testId="match__board__loading__spinner" />
             </SpinnerWrapper>
           </LoadingGame>
         )}
-        {!isLoading && <Board cards={cards} onFinishGame={handleOnFinishGame} />}
+        {!isLoading && (
+          <Board testId="match__board__game" cards={cards} onFinishGame={handleOnFinishGame} />
+        )}
       </BoardWrapper>
 
       <Modal
@@ -78,14 +80,18 @@ export default function Match() {
         isOpen={isOpenFinishMatchModal}
         onClose={() => setIsOpenFinishMatchModal(false)}
       >
-        <ModalBody>
+        <ModalBody data-testid="match__modal__body">
           <ModalBodyTitle>{typeFinishGame === GAME_RESULT.WIN && `You Win!`}</ModalBodyTitle>
           <ModalBodyTitle>{typeFinishGame === GAME_RESULT.LOSE && `You lose :-(`}</ModalBodyTitle>
           <ModalBodyScore>{`Score: ${finalScore}`}</ModalBodyScore>
 
-          <ModalBodyActions>
-            <Button onClick={() => navigate('/')}>Go home</Button>
-            <Button onClick={handleOnClickPlayAgain}>Play again</Button>
+          <ModalBodyActions data-testid="match__modal__body__actions">
+            <Button testId="match__modal__body__action__go_home_btn" onClick={() => navigate('/')}>
+              Go home
+            </Button>
+            <Button testId="match__modal__body__action__play_btn" onClick={handleOnClickPlayAgain}>
+              Play again
+            </Button>
           </ModalBodyActions>
         </ModalBody>
       </Modal>

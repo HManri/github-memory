@@ -16,14 +16,14 @@ export default function Home() {
   const navigate = useNavigate();
 
   return (
-    <HomeWrapper>
-      <HomeFloating>
-        <Title>
+    <HomeWrapper data-testid="home">
+      <HomeFloating data-testid="home__box">
+        <Title data-testid="home__title">
           <MainTitle>Welcome to</MainTitle>
           <StrongTitle>GitHub Memory</StrongTitle>
         </Title>
 
-        <HomeActions>
+        <HomeActions data-testid="home__actions">
           <Button testId="start_game__btn" onClick={() => navigate('/match')}>
             <ButtonText>Start</ButtonText>
           </Button>

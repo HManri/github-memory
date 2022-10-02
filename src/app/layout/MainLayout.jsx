@@ -6,10 +6,10 @@ import { Banner, Title, Wrapper } from './MainLayout.style';
 export default function MainLayout() {
   return (
     <>
-      <Banner>
+      <Banner data-testid="app__banner">
         <Title>GitHub Memory</Title>
       </Banner>
-      <Wrapper>
+      <Wrapper data-testid="app__wrapper">
         <Outlet />
       </Wrapper>
     </>

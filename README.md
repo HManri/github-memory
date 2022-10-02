@@ -73,3 +73,4 @@ Memory game using random GitHub user's images as card images.
 
 - Regarding the tests:
   - It's true they are not the very first tests I'm doing, it's not something I got the opportunity to work in any professional environment.
+  - I added as _data-testid_ I can. When testing end to end with **Cypress** we are going to need them to get the desired elements when moving around the DOM.

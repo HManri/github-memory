@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { array, func } from 'prop-types';
+import { array, string, func } from 'prop-types';
 
 import { useTimer } from 'hooks/useTimer';
 import { GAME_RESULT } from 'constants/gameResult';
@@ -15,7 +15,7 @@ import {
 
 const DEFAULT_TIMER = 2 * 60;
 
-export default function Board({ cards, onFinishGame }) {
+export default function Board({ cards, testId, onFinishGame }) {
   const [timer, startTimer, stopTimer] = useTimer(DEFAULT_TIMER);
   const [gameState, setGameState] = useState();
   const [selectedCardId, setSelectedCardId] = useState(null);
@@ -98,12 +98,12 @@ export default function Board({ cards, onFinishGame }) {
   }
 
   return (
-    <BoardWrapper>
-      <BoardGame>
+    <BoardWrapper data-testid={testId}>
+      <BoardGame data-testid={`${testId}__board_game`}>
         {cards.map((eachCard, index) => (
           <Card
             key={`card-${index}-${eachCard.id}`}
-            testId={`${index}-${eachCard.id}`}
+            testId={`card-${index}-${eachCard.id}`}
             image={eachCard.imageSrc}
             imageAlt={eachCard.imageAlt}
             active={index === selectedCardIndex || index === selectedPairCardIndex}
@@ -113,11 +113,18 @@ export default function Board({ cards, onFinishGame }) {
         ))}
       </BoardGame>
 
-      <BoardResults>
-        <BoardResultsText>{`Time: ${timer} seconds`}</BoardResultsText>
-        <BoardResultsText>{`Score: ${calculateScore(numberOfPairs)}`}</BoardResultsText>
-        <BoardResultsActions>
-          <Button onClick={handleOnClickGiveUp}>
+      <BoardResults data-testid={`${testId}__board_results`}>
+        <BoardResultsText data-testid={`${testId}__board_results__timer`}>
+          <span>{`Time: ${timer} seconds`}</span>
+        </BoardResultsText>
+        <BoardResultsText data-testid={`${testId}__board_results__score`}>
+          <span>{`Score: ${calculateScore(numberOfPairs)}`}</span>
+        </BoardResultsText>
+        <BoardResultsActions data-testid={`${testId}__board_results__actions`}>
+          <Button
+            testId={`${testId}__board_results__actions__give_up_btn`}
+            onClick={handleOnClickGiveUp}
+          >
             <BoardResultsText>Give up</BoardResultsText>
           </Button>
         </BoardResultsActions>
@@ -128,5 +135,6 @@ export default function Board({ cards, onFinishGame }) {
 
 Board.propTypes = {
   cards: array.isRequired,
+  testId: string,
   onFinishGame: func.isRequired,
 };
