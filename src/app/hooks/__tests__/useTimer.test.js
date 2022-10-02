@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react';
-import { useTimer } from '../useTimer';
+import { useTimer } from 'hooks/useTimer';
 
 describe('useTimer hook', () => {
   test('should run correctly', async () => {
@@ -8,14 +8,24 @@ describe('useTimer hook', () => {
 
     expect(timer).toBe(2);
 
-    await act(async () => {
+    act(() => {
       startTimer();
     });
 
     await act(() => new Promise((r) => setTimeout(r, 1000)));
+    act(() => {
+      stopTimer();
+    });
+    const [partialTimer] = result.current;
+    expect(partialTimer).toBe(1);
+
+    act(() => {
+      startTimer();
+    });
     await act(() => new Promise((r) => setTimeout(r, 1000)));
 
-    const [newTimer] = result.current;
-    expect(newTimer).toBe(0);
+    const [finalTimer] = result.current;
+
+    expect(finalTimer).toBe(0);
   });
 });
