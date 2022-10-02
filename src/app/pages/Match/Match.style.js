@@ -22,3 +22,30 @@ export const BoardWrapper = styled.div`
   padding: ${(props) => props.theme.spacings.big}px 0;
   box-sizing: border-box;
 `;
+
+export const ModalBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: ${(props) => props.theme.spacings.medium}px;
+  padding: ${(props) => props.theme.spacings.medium}px;
+`;
+
+export const ModalBodyTitle = styled.div`
+  ${(props) => props.theme.text.h1};
+`;
+
+export const ModalBodyScore = styled.div`
+  ${(props) => props.theme.text.h1};
+`;
+
+export const ModalBodyActions = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  gap: ${(props) => props.theme.spacings.medium}px;
+  margin-top: ${(props) => props.theme.spacings.medium}px;
+
+  button {
+    ${(props) => props.theme.text.h2};
+  }
+`;

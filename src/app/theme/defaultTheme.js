@@ -48,7 +48,7 @@ export default {
       fontWeight: '500',
       color: COLORS.text,
     },
-    subtitle: {
+    h2: {
       ...COMMON_TEXT,
       fontSize: '20px',
       lineHeight: '20px',

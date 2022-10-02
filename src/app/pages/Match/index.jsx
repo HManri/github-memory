@@ -1,16 +1,33 @@
 import React, { useEffect, useCallback, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { useGetImages } from 'hooks/useGetImages';
 import { randomizeArray } from 'utils/randomizeArray';
 import Board from 'pages/Match/components/Board';
-import { MatchWrapper, BoardWrapper } from './Match.style';
+import Modal from 'components/Modal';
+import Button from 'components/Button';
+import {
+  MatchWrapper,
+  BoardWrapper,
+  ModalBody,
+  ModalBodyTitle,
+  ModalBodyScore,
+  ModalBodyActions,
+} from './Match.style';
 
 export default function Match() {
+  const navigate = useNavigate();
   const [getImages, isLoadingImages] = useGetImages();
   const [cards, setCards] = useState();
+  const [isOpenFinishMatchModal, setIsOpenFinishMatchModal] = useState(false);
 
   const handleOnFinishGame = (status) => {
     console.log(status);
+  };
+
+  const handleOnClickPlayAgain = () => {
+    initializeGame();
+    setIsOpenFinishMatchModal(false);
   };
 
   const initializeGame = useCallback(async () => {
@@ -41,6 +58,22 @@ export default function Match() {
       <BoardWrapper>
         <Board cards={cards} onFinishGame={handleOnFinishGame} />
       </BoardWrapper>
+
+      <Modal
+        testId="match__modal"
+        isOpen={isOpenFinishMatchModal}
+        onClose={() => setIsOpenFinishMatchModal(false)}
+      >
+        <ModalBody>
+          <ModalBodyTitle>You Win!</ModalBodyTitle>
+          <ModalBodyScore>Score: 500</ModalBodyScore>
+
+          <ModalBodyActions>
+            <Button onClick={() => navigate('/')}>Go home</Button>
+            <Button onClick={handleOnClickPlayAgain}>Play again</Button>
+          </ModalBodyActions>
+        </ModalBody>
+      </Modal>
     </MatchWrapper>
   );
 }
