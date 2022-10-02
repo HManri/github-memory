@@ -12,7 +12,7 @@ export default function Card({ testId, image, imageAlt, active, disabled, onClic
       onClick={!disabled ? onClick : undefined}
     >
       <img src={image} alt={imageAlt} />
-      <TranslucidLayer show={disabled} />
+      <TranslucidLayer data-testid={`${testId}__translucid_layer`} show={disabled} />
     </Wrapper>
   );
 }

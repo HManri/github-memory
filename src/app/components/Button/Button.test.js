@@ -44,7 +44,7 @@ describe('Button', () => {
 
     const htmlButton = container.querySelector('button');
     fireEvent.click(htmlButton);
-    expect(mockFunction).toBeCalled();
+    expect(mockFunction).toBeCalledTimes(1);
   });
 
   test('should not call click method because is disabled', () => {
