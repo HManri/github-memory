@@ -7,6 +7,7 @@ import { randomizeArray } from 'utils/randomizeArray';
 import Board from 'pages/Match/components/Board';
 import Modal from 'components/Modal';
 import Button from 'components/Button';
+import Spinner from 'components/Spinner';
 import {
   MatchWrapper,
   BoardWrapper,
@@ -14,6 +15,8 @@ import {
   ModalBodyTitle,
   ModalBodyScore,
   ModalBodyActions,
+  LoadingGame,
+  SpinnerWrapper,
 } from './Match.style';
 
 export default function Match() {
@@ -55,15 +58,19 @@ export default function Match() {
     initializeGame();
   }, [initializeGame]);
 
-  if (!cards || isLoadingImages) {
-    // TODO loading screen
-    return <div>Loading</div>;
-  }
+  const isLoading = !cards || isLoadingImages;
 
   return (
     <MatchWrapper>
-      <BoardWrapper>
-        <Board cards={cards} onFinishGame={handleOnFinishGame} />
+      <BoardWrapper data-testid="foobar">
+        {isLoading && (
+          <LoadingGame>
+            <SpinnerWrapper>
+              <Spinner />
+            </SpinnerWrapper>
+          </LoadingGame>
+        )}
+        {!isLoading && <Board cards={cards} onFinishGame={handleOnFinishGame} />}
       </BoardWrapper>
 
       <Modal

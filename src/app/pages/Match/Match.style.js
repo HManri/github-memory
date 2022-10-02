@@ -49,3 +49,23 @@ export const ModalBodyActions = styled.div`
     ${(props) => props.theme.text.h2};
   }
 `;
+
+export const LoadingGame = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 16px;
+  background-color: rgba(33, 33, 33, 0.55);
+`;
+
+export const SpinnerWrapper = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: ${(props) => props.theme.colors.white};
+  padding: ${(props) => props.theme.spacings.medium}px;
+  border-radius: 16px;
+`;
