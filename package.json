@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack serve --mode development --env mode=development",
     "lint": "eslint --fix --config .eslintrc --no-error-on-unmatched-pattern --ext js,jsx src/app",
-    "test": "jest"
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "pre-commit": [
     "lint",
