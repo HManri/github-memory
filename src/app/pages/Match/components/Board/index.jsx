@@ -13,7 +13,7 @@ import {
   BoardResultsActions,
 } from './Board.style';
 
-const DEFAULT_TIMER = 2 * 60;
+const DEFAULT_TIMER = 60;
 
 export default function Board({ cards, testId, onFinishGame }) {
   const [timer, startTimer, stopTimer] = useTimer(DEFAULT_TIMER);

@@ -49,7 +49,7 @@ exports[`Board should render correctly 1`] = `
             data-testid="board-test__board_results__timer"
           >
             <span>
-              Time: 120 seconds
+              Time: 60 seconds
             </span>
           </div>
           <div
@@ -124,7 +124,7 @@ exports[`Board should render correctly 1`] = `
           data-testid="board-test__board_results__timer"
         >
           <span>
-            Time: 120 seconds
+            Time: 60 seconds
           </span>
         </div>
         <div
