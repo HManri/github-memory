@@ -49,6 +49,26 @@ Memory game using random GitHub user's images as card images.
 >
 > &nbsp;
 
+## 🏁 Start playing
+
+- Clone the repository into your computer.
+- Obtain a GitHub Personal Token (see installation section of this file).
+- Add your new GitHub Personal Token into **.env** file.
+  - If you don't have the file created, in your command line, write (be sure you are inside the project folder):
+    > ```
+    > touch .env
+    > echo GITHUB_TOKEN=<<your github personal token>>
+    > ```
+- Install dependencies
+  > ```
+  > npm install
+  > ```
+- Start the project
+  > ```
+  > npm start
+  > ```
+- Open the game in a new tab, on your favourite browser, accessing to **http://localhost:8080**
+
 ## 🔘 Next features to do
 
 - Thanks to have a basic **Board** in a different component of **Match**, we can do different _Boards_ with different rules, allowing the player to play in differents modes.
