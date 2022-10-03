@@ -11,5 +11,8 @@ describe('utils/randomizeArray', () => {
     expect(originalArray[0]).toBe(1);
     expect(originalArray[1]).toBe(2);
     expect(originalArray[2]).toBe(3);
+
+    expect(randomizeArray()).toBe(null);
+    expect(randomizeArray(1)).toBe(null);
   });
 });
